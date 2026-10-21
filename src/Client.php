@@ -25,7 +25,7 @@ class Client implements BaseClientInterface
      */
     protected $uri;
 
-    public function __construct($username, $password, $testEnvironment = false, ClientInterface $httpClient = null)
+    public function __construct($username, $password, $testEnvironment = false, ?ClientInterface $httpClient = null)
     {
         $query = sprintf('s_login=%s&s_pw=%s', $username, $password);
 
@@ -92,7 +92,6 @@ class Client implements BaseClientInterface
     protected function validateResponse(string $body): void
     {
         if (substr($body, 0, 10) != '[RESPONSE]' && substr($body, 0, 7) != 'code = ') {
-            echo substr($body, 0, 7);
             throw new InvalidResponseFormatException('Response body begins neither with "[RESPONSE]" header nor code property');
         }
 
