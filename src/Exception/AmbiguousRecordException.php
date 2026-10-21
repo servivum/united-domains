@@ -11,7 +11,7 @@ class AmbiguousRecordException extends ApiException
      */
     protected $records = [];
 
-    public function __construct(array $records, string $message = "", int $code = 0, Throwable $previous = null)
+    public function __construct(array $records, string $message = "", int $code = 0, ?Throwable $previous = null)
     {
         $this->records = $records;
 
